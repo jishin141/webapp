@@ -1,0 +1,84 @@
+{% extends 'headerfooter.html' %}
+
+{% block content %}
+	<!-- banner-2 -->
+	<div class="page-head_agile_info_w3l">
+
+	</div>
+	<!-- //banner-2 -->
+	<!-- page -->
+	<div class="services-breadcrumb">
+		<div class="agile_inner_breadcrumb">
+			<div class="container">
+				<ul class="w3_short">
+					<li>
+						<a href="/">Home</a>
+						<i>|</i>
+					</li>
+					<li>Contact Us</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- //page -->
+
+ <div class="container mt-3">
+             
+                <table class="table table-hover table-striped table-bordered">
+                <thead>
+                <tr>
+                	<th>Sno</th>
+                 <th>name</th>
+                 <th>password</th>
+                 <th>Email</th>
+               
+     
+                 </tr>
+                 </thead>
+                 <tbody>
+                    {% for x in datakey %}
+                 <tr>
+                 <td>{{forloop.counter}}</td>
+                 <td>{{x.name}}</td>
+                 <td>{{x.password}}</td>
+                 <td>{{x.email}}</td>
+               
+                 </tr>
+                 {% endfor %}
+                
+                 </tbody>
+                 </table>
+
+                <!--  <table class="table table-hover table-striped table-bordered">
+                <thead>
+                <tr>
+                	<th>Sno</th>
+                 <th>fullname</th>
+                 <th>number</th>
+                 <th>landmark</th>
+                 <th>city</th>
+
+                 </tr>
+                 </thead>
+                 <tbody>
+                    {% for x in datakey %}
+                 <tr>
+                 <td>{{forloop.counter}}</td>
+                 <td>{{x.fullname}}</td>
+                 <td>{{x.number}}</td>
+                 <td>{{x.landmark}}</td>
+                 <td>{{x.city}}</td>
+
+               
+                 </tr>
+                 {% endfor %}
+                
+                 </tbody>
+                 </table> -->
+ </div>
+
+
+	
+	
+
+{% endblock %}

@@ -1,0 +1,167 @@
+{% extends 'headerfooter.html' %}
+
+{% block content %}
+
+
+	<!-- banner-2 -->
+	<div class="page-head_agile_info_w3l">
+
+	</div>
+	<!-- //banner-2 -->
+	<!-- page -->
+	<div class="services-breadcrumb">
+		<div class="agile_inner_breadcrumb">
+			<div class="container">
+				<ul class="w3_short" style="font-family:times new roman;">
+					<li>
+						<a href="/">Home</a>
+						<i>|</i>
+					</li>
+					<li>Checkout</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- //page -->
+	<!-- checkout page -->
+	<div class="privacy py-sm-5 py-4">
+		<div class="container py-xl-4 py-lg-2">
+			<!-- tittle heading -->
+			<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
+				<span>C</span>heckout
+			</h3>
+			<!-- //tittle heading -->
+			<div class="checkout-right">
+				
+				<div class="table-responsive">
+					<table class="timetable_sub">
+						<thead >
+							<tr>
+								<th>SL No.</th>
+								<th>Product</th>
+								<th>Model Name</th>
+								<th>Quantity</th>
+								<th>Remove</th>
+								<th>Price</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for x in datakey %}
+							<tr class="rem1">
+								<td>{{forloop.counter}}</td>
+								<td class="invert-image">
+									<a href="/single/">
+										<img src="{{x.pid.img.url}}" width="50px" height="50px" alt=" " class="img-responsive">
+									</a>
+								</td>
+								<td class="invert">{{x.pid.model_name}}</td>
+
+
+								<td class="invert">
+									<div class="quantity">
+										<div class="quantity-select">
+								       <form action="/cartupdate/?cid={{x.id}}" method="POST" id="form-id">
+										{% csrf_token %}										
+											<div>
+												<input min="1" max="10" value="{{x.quantity}}" name="quantity"   type="number" >
+											</div>
+											<input type="submit" class="btn" value="update">										
+                        </form>
+									</div>
+								</td>
+
+
+								<!-- <td class="invert">
+									<div class="quantity">
+										<div class="quantity-select">
+
+											<div class="entry value-minus" id="minus" onclick="document.location='/cartupdate/?cid={{x.id}}'" >&nbsp;</div>
+											<div class="entry value">
+												<span>1</span>
+											</div>
+											<div class="entry value-plus active" id="plus" onclick="document.location='/cartupdate/?cid={{x.id}}'">&nbsp;</div>
+										</div>
+									</div>
+								</td> -->						
+								<td class="invert">
+									<div class="rem">
+										<div ><a href="/deleteitem/?pid={{x.id}}">Remove</a> </div>
+									</div>
+								</td>
+								<td class="invert">{{x.totalprice}}</td>
+								
+							</tr>
+							{% endfor %}
+							
+						</tbody>
+					</table>
+				</div>
+
+
+ <!-- total -->
+          <ul class="list-group mb-3 z-depth-1">
+            <li class="list-group-item d-flex justify-content-between lh-condensed"> 
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span><b>Total Amount</b></span>
+              <strong>{{total}}</strong>
+            </li>
+          </ul>
+ <!-- //total -->
+			</div>
+			<div class="checkout-left">
+				<div class="address_form_agile mt-sm-5 mt-4" style="font-family:times new roman;">
+					<h4 class="mb-sm-4 mb-3" >Shipping Address</h4>
+					<form action="/checkout/?total={{total}}" method="POST" enctype="multipart/form-data" class="creditly-card-form agileinfo_form">
+						{% csrf_token %}
+						<div class="creditly-wrapper wthree, w3_agileits_wrapper">
+							<div class="information-wrapper">
+								<div class="first-row">
+									<div class="controls form-group">
+										<input class="billing-address-name form-control" type="text" name="fullname" placeholder="Full Name" required="">
+									</div>
+									<div class="w3_agileits_card_number_grids">
+										<div class="w3_agileits_card_number_grid_left form-group">
+											<div class="controls">
+												<input type="text" class="form-control" placeholder="Mobile Number" name="number" required="">
+											</div>
+										</div>
+										<div class="w3_agileits_card_number_grid_right form-group">
+											<div class="controls">
+												<input type="text" class="form-control" placeholder="Landmark" name="landmark" required="">
+											</div>
+										</div>
+									</div>
+									<div class="controls form-group">
+										<input type="text" class="form-control" placeholder="Town/City" name="city" required="">
+									</div>
+									<div class="controls form-group">
+										<select class="option-w3ls">
+											<option>Select Address type</option>
+											<option>Office</option>
+											<option>Home</option>
+											<option>Commercial</option>
+
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+					
+					<div class="checkout-right-basket">
+						<button type="submit" >
+							<span class="far fa-hand-point-right">Make a Payment</span>
+						</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //checkout page -->
+
+	
+
+	
+{% endblock %}
+

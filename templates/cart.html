@@ -1,0 +1,74 @@
+{% extends 'headerfooter.html' %}
+
+{% block content %}
+	<!-- banner-2 -->
+	<div class="page-head_agile_info_w3l">
+
+	</div>
+	<!-- //banner-2 -->
+	<!-- page -->
+	<div class="services-breadcrumb">
+		<div class="agile_inner_breadcrumb">
+			<div class="container">
+				<ul class="w3_short" style="font-family:times new roman;">
+					<li>
+						<a href="/">Home</a>
+						<i>|</i>
+					</li>
+					<li>CART</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- //page -->
+<div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4 ">
+ <div class="container mt-3">
+             <!-- tittle heading -->
+			<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3" style="font-family:times new roman;">
+				<b><span>C</span>art</b>
+			</h3>
+			{% if datakey %}
+                <table class="table table-hover table-striped table-bordered" style="font-family:times new roman;">
+                <thead>
+                <tr>
+                	<th>Sno</th>
+                 <th>Model name</th>
+                 <th>Price</th>
+                 <th>Image</th>
+                 <th>Remove</th>
+                 </tr>
+                 </thead>
+                 <tbody>
+                    {% for x in datakey %}
+                 <tr>
+                 <td>{{forloop.counter}}</td>
+                 <td>{{x.pid.model_name}}</td>
+                 <td>{{x.pid.price}}</td>
+                 <td><img src="{{x.pid.img.url}}" width="50px" height="50px" ></td>
+                 <td><a href="/deleteitem/?pid={{x.id}}">Remove</a></td>
+                 </tr>
+                 {% endfor %}
+                 </tbody>
+                 </table>
+                 <div class="checkout-right-basket">
+						<a class="bg-primary" href="/checkout/">Buy Now</a>
+				
+                 </div>
+                 {% else %}
+                 <div class="text-center">
+                 	No items in cart 
+                 </div>
+                 <div class="checkout-right-basket">
+						<a class="bg-primary" href="/">Shop Now</a>
+				
+                 </div>
+                 {% endif %}
+
+			</div>
+
+</div>
+
+
+
+
+{% endblock %}
